@@ -11,22 +11,25 @@ export default function Text({
   color,
   buttonText,
   testID,
+  style,
 }) {
   const currentTheme = useSelector(selectTheme);
+  const defaultColor = color
+    ? color
+    : buttonText
+    ? colors[currentTheme].buttonText
+    : colors[currentTheme].text;
+
   const styles = StyleSheet.create({
     main: {
       fontFamily: bold ? 'Montserrat-Bold' : 'Montserrat-Regular',
       fontSize: fontSize[size],
-      color: color
-        ? color
-        : buttonText
-        ? colors[currentTheme].buttonText
-        : colors[currentTheme].text,
+      color: defaultColor,
     },
   });
 
   return (
-    <RText testID={testID} style={styles.main}>
+    <RText testID={testID} style={[styles.main, style]}>
       {children}
     </RText>
   );
