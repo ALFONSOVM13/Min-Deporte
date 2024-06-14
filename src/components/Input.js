@@ -1,6 +1,8 @@
 import React from 'react';
 import { Text, TextInput, View, StyleSheet } from "react-native";
-import { generalStyle } from '../styles/generalStyle'; // ¿Dónde se define generalStyle?
+import { useSelector } from 'react-redux';
+import { selectTheme } from '../redux/slices/app.slice'; 
+import { generalStyle } from '../styles/generalStyle';
 
 const Input = ({
   title,
@@ -9,17 +11,23 @@ const Input = ({
   onChangeText,
   placeholderText, 
   componentStyle,
+  inputTextColor,
+  inputBackgroundColor,
   keyboardType,
   secureTextEntry,
   iconComponent
 }) => {
+  const currentTheme = useSelector(selectTheme); 
+  const textColor = inputTextColor || (currentTheme === 'dark' ? '#fff' : '#000');
+  const backgroundColor = inputBackgroundColor || (currentTheme === 'dark' ? '#333' : '#F3F3F3');
+
   return (
     <View style={[generalStyle.generalInputContainer, componentStyle]}>
-      <Text style={generalStyle.generalInputTitle}>{title}</Text>
-      <View style={[generalStyle.generalInputContent, (!editable ? generalStyle.generalInputContainerDisabled : ''), styles.inputWithIcon]}>
+      <Text style={[generalStyle.generalInputTitle, {color: textColor}]}>{title}</Text>
+      <View style={[generalStyle.generalInputContent, (!editable ? generalStyle.generalInputContainerDisabled : ''), styles.inputWithIcon, {backgroundColor}]}>
         {iconComponent}
         <TextInput
-          style={[generalStyle.generalInput, styles.inputField]}
+          style={[generalStyle.generalInput, styles.inputField, {color: textColor}]}
           value={value}
           editable={editable}
           placeholder={placeholderText} 

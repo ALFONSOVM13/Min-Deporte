@@ -15,7 +15,7 @@ export default function Container({children, scroll, os = Platform.OS}) {
   const styles = StyleSheet.create({
     main: {
       width,
-      paddingLeft: width * 0.05,
+      paddingLeft: width * 0.02,
       paddingRight: width * 0.02,
       height,
       backgroundColor: colors[currentTheme].background,

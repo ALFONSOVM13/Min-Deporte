@@ -20,45 +20,51 @@ export default function SettingScreen() {
   };
 
   const styles = StyleSheet.create({
+    buttonContainer: {
+      alignItems: 'center', // Centra los botones horizontalmente
+    },
     container: {
+      flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      flexDirection: 'row',
-      gap: 10,
     },
   });
 
   return (
     <Container>
       <Text>Pantalla de configuración</Text>
-      <Button testID="goBackButton" onPress={() => navigate.goBack()}>
-        <Text buttonText>Atrás</Text>
-      </Button>
-      <Button testID="themeButton" onPress={changeTheme}>
-        {currentTheme === 'light' ? (
-          <View style={styles.container}>
-            <Text testID="darkText" buttonText>
-              Activar modo oscuro
-            </Text>
-            <Icon
-              name="dark-mode"
-              size={20}
-              color={colors[currentTheme].buttonText}
-            />
-          </View>
-        ) : (
-          <View style={styles.container}>
-            <Text testID="lightText" buttonText>
-              Activar modo claro
-            </Text>
-            <Icon
-              name="light-mode"
-              size={20}
-              color={colors[currentTheme].buttonText}
-            />
-          </View>
-        )}
-      </Button>
+      <View style={styles.buttonContainer}>
+        <Button testID="goBackButton" onPress={() => navigate.goBack()}>
+          <Text buttonText>Atrás</Text>
+        </Button>
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button testID="themeButton" onPress={changeTheme}>
+          {currentTheme === 'light' ? (
+            <View style={styles.container}>
+              <Text testID="darkText" buttonText>
+                Activar modo oscuro
+              </Text>
+              <Icon
+                name="dark-mode"
+                size={20}
+                color={colors[currentTheme].buttonText}
+              />
+            </View>
+          ) : (
+            <View style={styles.container}>
+              <Text testID="lightText" buttonText>
+                Activar modo claro
+              </Text>
+              <Icon
+                name="light-mode"
+                size={20}
+                color={colors[currentTheme].buttonText}
+              />
+            </View>
+          )}
+        </Button>
+      </View>
     </Container>
   );
 }

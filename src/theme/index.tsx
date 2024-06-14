@@ -8,6 +8,7 @@ export const fontSize = {
 
 export const colors = {
   light: {
+    title: '#FFF',
     text: '#242424',
     background: '#FFF',
     button: '#194295',
@@ -19,12 +20,14 @@ export const colors = {
     input: '#eae9ee',
   },
   dark: {
+    title: '#242424',
     text: '#FFF',
     background: '#242424',
     button: '#194295',
     buttonText: '#FFF',
     card: '#646464',
-    active: '#194295',
+    card2: '#242424',
+    active: '#5869C8',
     inactive: '#CAC7C7',
     input: '#C9C8CA',
   },

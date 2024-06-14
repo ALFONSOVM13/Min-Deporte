@@ -2,7 +2,6 @@
   import {useDispatch} from 'react-redux';
   import {setSignIn} from '../../redux/slices/auth.slice';
   import {useState} from 'react';
-  import Container from '../../components/Container';
   import Text from '../../components/Text';
   import Button from '../../components/Button';
   import {ImageBackground, StyleSheet, View, Image} from 'react-native';
@@ -12,7 +11,7 @@
   import Input from '../../components/Input';
 
   export default function HomeScreen() {
-    const [form, setForm] = useState({email: '', password: ''});
+    const [form, setForm] = useState({email: 'soporte@naowee.com', password: '12345678'});
     const dispatch = useDispatch();
 
     const doLogin = () => {
@@ -28,6 +27,7 @@
           <Input
             testID="usernameInput"
             placeholderText={'Email:'}
+            value={form.email}
             onChangeText={text => {
               setForm({...form, email: text});
             }}
@@ -35,6 +35,7 @@
           <Input
             testID="passwordInput"
             placeholderText={'Contraseña:'}
+            value={form.password}
             secureTextEntry={true}
             onChangeText={text => {
               setForm({...form, password: text});
