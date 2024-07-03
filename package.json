@@ -10,7 +10,7 @@
     "test": "jest --updateSnapshot --coverage --forceExit",
     "clean": "cd android && gradlew clean",
     "build:bundle": "npm version major && cd android && gradlew clean && gradlew bundleRelease",
-    "build:apk": "npm version major && cd android && gradlew clean && gradlew bundleRelease"
+    "build-apk": "cd android && gradlew assembleRelease"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.22.2",
